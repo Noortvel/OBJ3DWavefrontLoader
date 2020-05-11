@@ -1,7 +1,7 @@
 # Wavefront OBJ loader
 ## Usage
     var stream = File.OpenRead("rabbit.obj");
-    var simpleMesh = LoadFromObj(stream);
+    var simpleMesh = SimpleMesh.LoadFromObj(stream);
 ### SimpleMesh structure
     class SimpleMesh
     {

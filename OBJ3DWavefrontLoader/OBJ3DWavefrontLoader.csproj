@@ -8,6 +8,9 @@
     <Description>Wavefront 3d object file format loader</Description>
     <PackageTags>3d obj wavefront loader</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Noortvel/OBJ3DWavefrontLoader</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Noortvel/OBJ3DWavefrontLoader</RepositoryUrl>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>

@@ -5,68 +5,45 @@ using System.Numerics;
 
 namespace OBJ3DWavefrontLoader
 {
-
-    class SimpleMesh
+    public class SimpleMesh
     {
         public List<Vector3> vertices = new List<Vector3>();
-        public List<List<int>> facesVerts = new List<List<int>>();
-        public List<List<int>> faceseUV = new List<List<int>>();
-        public List<List<int>> facesNorms = new List<List<int>>();
-        public static SimpleMesh LoadFromObj(Stream file)
+        public List<Vector3> normals = new List<Vector3>();
+        public List<Vector3> uvw = new List<Vector3>();
+        public List<List<int>> facesVertsIndxs = new List<List<int>>();
+        public List<List<int>> facesUVwIndxs = new List<List<int>>();
+        public List<List<int>> facesNormsIndxs = new List<List<int>>();
+        public static SimpleMesh LoadFromObj(StreamReader reader)
         {
-            var reader = new StreamReader(file);
             var obj = new SimpleMesh();
+            List<int> vertsIndxs;
+            List<int> uvsIndxs;
+            List<int> normsIndxs;
+            Vector3 vertice;
+            Vector3 normal;
+            Vector3 uvw;
             for (var str = reader.ReadLine(); str != null; str = reader.ReadLine())
             {
-                ObjParseVerteces(obj, str);
-                ObjParseFaces(obj, str);
-            }
-            return obj;
-        }
-        private static void ObjParseVerteces(SimpleMesh obj, string str)
-        {
-            if (str[0] == 'v' && str[1] == ' ')
-            {
-                var tokens = str.Split(' ');
-                float x = float.Parse(tokens[1], CultureInfo.InvariantCulture);
-                float y = float.Parse(tokens[2], CultureInfo.InvariantCulture);
-                float z = float.Parse(tokens[3], CultureInfo.InvariantCulture);
-                obj.vertices.Add(new Vector3(x, y, z));
-            }
-        }
-        private static void ObjParseFaces(SimpleMesh obj, string str)
-        {
-            if (str[0] == 'f')
-            {
-                var tokens = str.Split(' ');
-                int index = obj.facesVerts.Count;
-                obj.facesVerts.Add(new List<int>());
-                obj.faceseUV.Add(new List<int>());
-                obj.facesNorms.Add(new List<int>());
-                foreach (var x in tokens)
+                if (OBJParser.TryParseFace(str, out vertsIndxs, out uvsIndxs, out normsIndxs))
                 {
-                    var t2 = x.Split('/');
-                    if (t2.Length == 0)
-                    {
-                        obj.facesVerts[index].Add(int.Parse(x));
-                    }
-                    else if (t2.Length == 2)
-                    {
-                        obj.facesVerts[index].Add(int.Parse(t2[0]));
-                        obj.faceseUV[index].Add(int.Parse(t2[1]));
-                    }
-                    else if (t2.Length == 3)
-                    {
-                        int uv;
-                        if (int.TryParse(t2[1], out uv))
-                        {
-                            obj.faceseUV[index].Add(uv);
-                        }
-                        obj.facesVerts[index].Add(int.Parse(t2[0]));
-                        obj.facesNorms[index].Add(int.Parse(t2[2]));
-                    }
+                    obj.facesVertsIndxs.Add(vertsIndxs);
+                    obj.facesUVwIndxs.Add(uvsIndxs);
+                    obj.facesNormsIndxs.Add(normsIndxs);
+                } 
+                else if(OBJParser.TryParseVertice(str, out vertice))
+                {
+                    obj.vertices.Add(vertice);
+                } 
+                else if(OBJParser.TryParseNormal(str, out normal))
+                {
+                    obj.normals.Add(normal);
+                } 
+                else if(OBJParser.TryParseUVw(str, out uvw))
+                {
+                    obj.uvw.Add(uvw);
                 }
             }
+            return obj;
         }
     }
 }

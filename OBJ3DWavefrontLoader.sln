@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBJ3DWavefrontLoader", "OBJ3DWavefrontLoader\OBJ3DWavefrontLoader.csproj", "{21BF9D31-F983-47A7-A8A9-B5E6B36259C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OBJ3DWavefrontLoader", "OBJ3DWavefrontLoader\OBJ3DWavefrontLoader.csproj", "{21BF9D31-F983-47A7-A8A9-B5E6B36259C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBJ3DWavefrontLoaderUnitTests", "OBJ3DWavefrontLoaderUnitTests\OBJ3DWavefrontLoaderUnitTests.csproj", "{93C581D3-0D01-4E67-83E9-33C4F87A67C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{21BF9D31-F983-47A7-A8A9-B5E6B36259C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21BF9D31-F983-47A7-A8A9-B5E6B36259C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21BF9D31-F983-47A7-A8A9-B5E6B36259C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93C581D3-0D01-4E67-83E9-33C4F87A67C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93C581D3-0D01-4E67-83E9-33C4F87A67C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93C581D3-0D01-4E67-83E9-33C4F87A67C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93C581D3-0D01-4E67-83E9-33C4F87A67C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

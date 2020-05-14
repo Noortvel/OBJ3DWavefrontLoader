@@ -358,3 +358,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+#Not ignore .obj(wavefront 3d obj) in resources
+!OBJ3DWavefrontLoaderUnitTests/Resources/*.obj

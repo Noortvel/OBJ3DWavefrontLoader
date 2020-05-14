@@ -1,12 +1,17 @@
 # Wavefront OBJ loader
 ### Usage
-    var stream = File.OpenRead("rabbit.obj");
-    var simpleMesh = SimpleMesh.LoadFromObj(stream);
+     SimpleMesh simpleMesh;
+     using (var reader = new StreamReader("G:\\cube2.obj"))
+     {
+     	simpleMesh = SimpleMesh.LoadFromObj(reader);
+     }
 ### SimpleMesh structure
     class SimpleMesh
     {
-        public List<Vector3> vertices;
-        public List<List<int>> facesVerts;
-        public List<List<int>> faceseUV;
-        public List<List<int>> facesNorms;
+        public List<Vector3> vertices = new List<Vector3>();
+        public List<Vector3> normals = new List<Vector3>();
+        public List<Vector3> uvw = new List<Vector3>();
+        public List<List<int>> facesVertsIndxs = new List<List<int>>();
+        public List<List<int>> facesUVwIndxs = new List<List<int>>();
+        public List<List<int>> facesNormsIndxs = new List<List<int>>();
     }
